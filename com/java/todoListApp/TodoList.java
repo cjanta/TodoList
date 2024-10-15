@@ -25,6 +25,10 @@ public class TodoList {
         this.user = user;
     }
 
+    public ArrayList<TodoTask> getTasks(){
+        return tasks;
+    }
+
     public static TodoList getInstance(){
         if(instance == null){
             instance = new TodoList();
@@ -64,7 +68,7 @@ public class TodoList {
         tasks.get(index).category = category;
     }
 
-   private void updateFrameComponent(){
+   public void updateFrameComponent(){
     frameComponent.update(tasks);
    }
 }

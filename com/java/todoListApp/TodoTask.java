@@ -1,6 +1,8 @@
 package com.java.todoListApp;
 
-public class TodoTask {
+import java.io.Serializable;
+
+public class TodoTask implements Serializable{
 
     public String creatorName;
     public String titel;

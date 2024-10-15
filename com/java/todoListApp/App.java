@@ -13,7 +13,6 @@ class App {
 
         todoList.addTask(new TodoTask(user.getUserName(), "Zweiter Titel", "Beschreibung", "DEV", "TODO"));
         
-
     }
 
     
