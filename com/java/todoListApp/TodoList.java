@@ -4,13 +4,15 @@ package com.java.todoListApp;
 import java.util.*;
 
 public class TodoList {
-    
-    private static TodoList instance;
     public static final String TASK_DONE = "Erledigt";
     public static final String TASK_TODO = "TODO";
+    
+    private static TodoList instance;
 
     private ArrayList<TodoTask> tasks = new ArrayList<>();
+
     private TodoListFrame frameComponent = new TodoListFrame();
+    
     private User user;
 
     private TodoList(){
