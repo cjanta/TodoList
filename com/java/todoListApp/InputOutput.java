@@ -8,28 +8,26 @@ import java.io.ObjectInputStream;
 
 public class InputOutput {
 
-    public String getPath(){
-        String appFolderPath = getClass().getResource("").getPath();
-        String fileName = "my_data.ser";
-        String filePath = appFolderPath + fileName; // Adjust the separator for your operating system
-        return filePath;
-    }
+    private static final String FILENAME = "Tasks.todo";
 
-    public void saveTodoTasksToFile(String fileName, ArrayList<TodoTask> taskList) {
-        try (FileOutputStream fos = new FileOutputStream(fileName); ObjectOutputStream oos = new ObjectOutputStream(fos))
+
+    public static void saveTodoTasksToFile() {
+        try (FileOutputStream fos = new FileOutputStream(FILENAME); ObjectOutputStream oos = new ObjectOutputStream(fos))
         {
-            oos.writeObject(taskList);
+            oos.writeObject(TodoList.getInstance().getTasks());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @SuppressWarnings("unchecked")
-    public void loadTodoTasksFromFile(String fileName, ArrayList<TodoTask> taskList) {
-
-        try (FileInputStream fis = new FileInputStream(fileName);
+    public static void loadTodoTasksFromFile() {
+        
+        ArrayList<TodoTask> loadedTaskList;
+        try (FileInputStream fis = new FileInputStream(FILENAME);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
-            taskList = (ArrayList<TodoTask>) ois.readObject();
+                loadedTaskList = (ArrayList<TodoTask>) ois.readObject();
+                TodoList.getInstance().setTasks(loadedTaskList);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.java.todoListApp.App",
+            "projectName": "TodoList_f1bae8e2"
+        },
+        {
+            "type": "java",
+            "name": "Launch It!",
+            "request": "launch",
+            "mainClass": "${file}",
+            "console": "internalConsole"
+        }
+    ]
+}

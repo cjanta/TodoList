@@ -10,11 +10,11 @@ public class TodoList {
     public static final String TASK_TODO = "TODO";
 
     private ArrayList<TodoTask> tasks = new ArrayList<>();
-    private TodoListFrame frameComponent = new TodoListFrame(this);
+    private TodoListFrame frameComponent = new TodoListFrame();
     private User user;
 
     private TodoList(){
-        //hide
+       //hide
     }
 
     public User getUser(){
@@ -29,9 +29,15 @@ public class TodoList {
         return tasks;
     }
 
+    public void setTasks(ArrayList<TodoTask> tasks){
+        this.tasks = tasks;
+    }
+
     public static TodoList getInstance(){
         if(instance == null){
             instance = new TodoList();
+            InputOutput.loadTodoTasksFromFile();
+            instance.updateFrameComponent();
         }
 
         return instance;
@@ -58,14 +64,17 @@ public class TodoList {
 
     public void SetTaskTitle(int index, String newTitle){
         tasks.get(index).titel = newTitle;
+
     }
 
     public void SetTaskDescription(int index, String newDescription){
         tasks.get(index).description = newDescription;
+      
     }
 
     public void SetTaskCategory(int index, String category){
         tasks.get(index).category = category;
+  
     }
 
    public void updateFrameComponent(){
